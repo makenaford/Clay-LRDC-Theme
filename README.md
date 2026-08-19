@@ -98,6 +98,32 @@ The palette in [`src/tokens/palette.ts`](src/tokens/palette.ts) was read off lif
 stylesheets rather than eyeballed — `#0b5fff` primary, `#0053f0` hover, `#00318f` active, and the
 Lexicon neutral ramp.
 
+## Icons
+
+1,553 icons live in `src/icons/library/`, forked from the Figma export. You do not reference them
+directly — `src/icons/icons.manifest.json` lists what ships, and `pnpm icons` builds a sprite plus a
+union type from it.
+
+```tsx
+import {Icon} from '../icons/Icon';
+
+<Icon name="lrdc-search" />
+```
+
+Three things that pipeline buys you:
+
+- **Only what you use is shipped.** 25 symbols, 11 KB. Clay's full spritemap alone is 110 KB gzipped.
+- **Icons follow your tokens.** The export hardcodes `stroke="#10161F"` on every icon; the build
+  rewrites it to `currentColor`, so an icon inherits whatever colour its context sets.
+- **Typos are compile errors.** `ClayIcon` types `symbol` as `string`, so a misspelling silently
+  renders nothing. The generated union catches it.
+
+Clay's 15 internal symbols (`caret-bottom`, `times`, `check`, …) are merged in automatically — Clay's
+own components hardcode those names, and without them dropdown carets and modal close buttons
+render as nothing.
+
+See [src/icons/README.md](src/icons/README.md).
+
 ## Two kinds of token
 
 | | Example | Where it works |
@@ -137,8 +163,9 @@ release is still rejected until someone looks at it. Release age is untouched an
 
 | | |
 |---|---|
-| `pnpm dev` | workbench on :5180 |
-| `pnpm build` | typecheck + production build |
+| `pnpm dev` | build icons, then the workbench on :5180 |
+| `pnpm build` | build icons, typecheck, production build |
+| `pnpm icons` | regenerate the sprite + registry only |
 | `pnpm typecheck` | types only |
 
 ## Further reading

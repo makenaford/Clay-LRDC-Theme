@@ -223,6 +223,16 @@
 	width: 2.5rem;
 }
 
+/*
+ * The icons inherit `currentColor` from the chip, which is what makes them follow
+ * `--lw-capability-icon-color` and its hover counterpart. Sizing is set here rather than on the
+ * icon because Clay leaves `.lexicon-icon` dimensions to the consumer.
+ */
+.lw-capability__icon svg {
+	height: 1.25rem;
+	width: 1.25rem;
+}
+
 .lw-capability__card:hover .lw-capability__icon {
 	background: var(--lw-capability-icon-hover-bg, #0b5fff);
 	color: var(--lw-capability-icon-hover-color, #fff);

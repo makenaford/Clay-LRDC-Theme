@@ -1,0 +1,36 @@
+{
+	"_comment": "The single source of truth for which icons ship. `pnpm icons` reads this to emit both public/icons.svg and src/icons/registry.ts — add an entry here, nowhere else. Keys become symbol ids; LRDC entries are prefixed `lrdc-` so they cannot collide with Clay's names.",
+
+	"lrdc": {
+		"ai": "weather/sparkles",
+		"analytics": "business/chart_bar_2",
+		"arrow-right": "arrow/arrow_right",
+		"assets": "files/photo_album",
+		"commerce": "business/shopping_cart_1",
+		"content": "files/documents",
+		"low-code": "development/code",
+		"personalization": "users/user_star",
+		"search": "files/search",
+		"security": "system/shield"
+	},
+
+	"_clayComment": "Symbols Clay's own components hardcode. Dropping any of these makes dropdown carets, modal close buttons and form validation ticks render as nothing — <use> fails silently on an unresolved id, with no console error. Verified against @clayui/{button,card,drop-down,form,label,modal,core}.",
+
+	"clay": [
+		"angle-left",
+		"angle-right",
+		"caret-bottom",
+		"caret-left",
+		"caret-right",
+		"caret-top",
+		"check",
+		"ellipsis-v",
+		"reload",
+		"reset",
+		"search",
+		"square",
+		"stars",
+		"times",
+		"times-small"
+	]
+}

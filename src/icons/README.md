@@ -5,6 +5,38 @@ itself a Figma export from **"Solutions Library- 2026"** (file key `KihJKyGA20st
 
 They live here so this repo does not depend on a sibling checkout.
 
+## The pipeline
+
+```
+icons.manifest.json          ← the only file you edit
+  └─ pnpm icons
+       ├─ public/icons.svg   ← generated sprite (gitignored)
+       └─ registry.ts        ← generated union type (committed)
+```
+
+`pnpm dev` and `pnpm build` both run `pnpm icons` first, so the sprite cannot go stale.
+
+To add an icon, add one line to `icons.manifest.json` and rebuild. Nothing else needs touching —
+not the registry, not a component, not the sprite.
+
+Use it through the typed wrapper, never `ClayIcon` directly:
+
+```tsx
+import {Icon} from '../../icons/Icon';
+
+<Icon name="lrdc-search" />
+```
+
+`ClayIcon` types `symbol` as `string`, so `symbol="serach"` renders an empty `<svg>` with no error
+of any kind. Going through `Icon` makes the same typo a compile error with a suggested correction.
+
+The build fails loudly rather than shipping a broken sprite — a source path that does not exist, a
+Clay symbol that is not in the installed spritemap, or one of the known-bad exports below each stop
+the build with an explanation.
+
+Only what the manifest lists is emitted. The current sprite is 25 symbols at 11 KB; Clay's full
+spritemap alone is 110 KB gzipped, which is more than this app's entire JS bundle.
+
 ## These files are a mirror — do not edit them
 
 `library/` is a faithful copy of the export. Re-syncing is a straight overwrite:
@@ -29,10 +61,15 @@ next export from Figma silently reverts it.
 - **0 use `currentColor`**
 
 As exported, none of them respond to the design tokens — they render near-black whatever
-`--primary` is set to. The build step must rewrite `stroke="#10161F"` → `stroke="currentColor"`.
+`--primary` is set to.
 
-Note it is `stroke`, not `fill`. Clay's own icons are fill-based, so a merged sprite needs both
-treatments.
+`scripts/build-icons.mjs` handles this: it rewrites any hardcoded hex in `stroke` **or** `fill` to
+`currentColor`, so an icon takes the colour of whatever context it sits in. `fill="none"` is left
+alone deliberately — on a stroke-based icon that is structural, and rewriting it would flood every
+icon with solid fills.
+
+Both attributes are covered because the set is not purely stroke-based: `files/photo_album` and
+`business/shopping_cart_1`, among others, carry hardcoded fills too.
 
 ## Known-bad files
 

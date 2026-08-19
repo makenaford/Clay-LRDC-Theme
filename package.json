@@ -9,8 +9,9 @@
     "node": ">=22.13"
   },
   "scripts": {
-    "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "icons": "node scripts/build-icons.mjs",
+    "dev": "pnpm icons && vite",
+    "build": "pnpm icons && tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit"
   },

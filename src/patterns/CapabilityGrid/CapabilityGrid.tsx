@@ -1,12 +1,47 @@
-const CAPABILITIES = [
-	{body: 'Ground answers in your own content, not the open web.', glyph: 'AI', title: 'AI Assistants'},
-	{body: 'One library for every asset across every site.', glyph: 'DA', title: 'Digital Assets'},
-	{body: 'B2B catalogues, contract pricing and self-service.', glyph: 'CO', title: 'Commerce'},
-	{body: 'Ship internal tools without a release train.', glyph: 'LC', title: 'Low-Code'},
-	{body: 'Author once, publish to every channel.', glyph: 'CM', title: 'Content Management'},
-	{body: 'Federated search across every connected system.', glyph: 'SE', title: 'Search'},
-	{body: 'Segment audiences and tailor each experience.', glyph: 'PE', title: 'Personalization'},
-	{body: 'SSO, granular permissions and audit trails.', glyph: 'SC', title: 'Security'},
+import {Icon} from '../../icons/Icon';
+import type {IconName} from '../../icons/registry';
+
+const CAPABILITIES: Array<{body: string; icon: IconName; title: string}> = [
+	{
+		body: 'Ground answers in your own content, not the open web.',
+		icon: 'lrdc-ai',
+		title: 'AI Assistants',
+	},
+	{
+		body: 'One library for every asset across every site.',
+		icon: 'lrdc-assets',
+		title: 'Digital Assets',
+	},
+	{
+		body: 'B2B catalogues, contract pricing and self-service.',
+		icon: 'lrdc-commerce',
+		title: 'Commerce',
+	},
+	{
+		body: 'Ship internal tools without a release train.',
+		icon: 'lrdc-low-code',
+		title: 'Low-Code',
+	},
+	{
+		body: 'Author once, publish to every channel.',
+		icon: 'lrdc-content',
+		title: 'Content Management',
+	},
+	{
+		body: 'Federated search across every connected system.',
+		icon: 'lrdc-search',
+		title: 'Search',
+	},
+	{
+		body: 'Segment audiences and tailor each experience.',
+		icon: 'lrdc-personalization',
+		title: 'Personalization',
+	},
+	{
+		body: 'SSO, granular permissions and audit trails.',
+		icon: 'lrdc-security',
+		title: 'Security',
+	},
 ];
 
 /**
@@ -14,6 +49,10 @@ const CAPABILITIES = [
  *
  * The tiles are Clay cards, so their surface, border and radius are the Card component's tokens.
  * Only the section framing and the icon chip belong to this pattern.
+ *
+ * The icons are decorative here — each sits beside a heading that already says the same thing — so
+ * they are left as Clay renders them (`role="presentation"`) with no added label. Repeating the
+ * title to a screen reader would be noise, not help.
  */
 export function CapabilityGrid() {
 	return (
@@ -28,7 +67,7 @@ export function CapabilityGrid() {
 						<article className="card lw-capability__card" key={capability.title}>
 							<div className="card-body">
 								<span className="lw-capability__icon">
-									{capability.glyph}
+									<Icon name={capability.icon} />
 								</span>
 
 								<h5 className="card-title">{capability.title}</h5>

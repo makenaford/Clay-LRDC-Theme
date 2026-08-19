@@ -9,3 +9,8 @@ dist/
 # marks carry usage restrictions of their own. The rsync in src/icons/README.md will repopulate this
 # directory on a re-sync — this rule is what stops it silently re-entering git.
 src/icons/library/brands/
+
+# Generated spritemap — rebuilt by `pnpm icons` from icons.manifest.json.
+# src/icons/registry.ts IS committed despite also being generated, so a fresh clone typechecks
+# before anyone has run a build.
+public/icons.svg
