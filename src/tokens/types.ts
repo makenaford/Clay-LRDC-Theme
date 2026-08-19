@@ -32,8 +32,17 @@ export interface Token {
 	/** Human label shown in the token editor. */
 	label: string;
 
-	/** The value this repo ships as its default. */
+	/** The value this repo ships as its default, in light mode. */
 	value: string;
+
+	/**
+	 * The value in dark mode.
+	 *
+	 * Omit it when the token does not depend on the theme — padding, radius, font size and the
+	 * like are shared, and repeating them would mean two places to change one number. A token
+	 * without a `dark` simply resolves to `value` in both modes.
+	 */
+	dark?: string;
 
 	type: TokenType;
 
@@ -65,6 +74,11 @@ export interface TokenSet {
 
 /** A flat `{'--var': 'value'}` map — what actually gets written to the DOM. */
 export type TokenValues = Record<string, string>;
+
+/** The two themes. Dark is the default, so it is the one `:root` carries. */
+export type ThemeMode = 'dark' | 'light';
+
+export const THEME_MODES: ThemeMode[] = ['dark', 'light'];
 
 /** Convenience for building token lists without repeating `type: 'color'` on every entry. */
 export function color(

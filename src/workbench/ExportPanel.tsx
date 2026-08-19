@@ -11,13 +11,14 @@ import {useTokenStore} from '../theme/tokenStore';
  * override surface honest and small.
  */
 export function ExportPanel() {
-	const {edits, resetAll} = useTokenStore();
+	const {allEdits, resetAll} = useTokenStore();
 
 	const [format, setFormat] = useState<'css' | 'json'>('css');
 
-	const output = format === 'css' ? toCss(edits) : toJson(edits);
+	const output = format === 'css' ? toCss(allEdits) : toJson(allEdits);
 
-	const count = Object.keys(edits).length;
+	const count =
+		Object.keys(allEdits.dark).length + Object.keys(allEdits.light).length;
 
 	return (
 		<div className="lw-wb-export">
@@ -64,7 +65,7 @@ export function ExportPanel() {
 			<p className="lw-wb-panel__desc">
 				{count === 0
 					? 'No edits yet. Change a token and it appears here.'
-					: `${count} token${count === 1 ? '' : 's'} changed from the shipped defaults.`}{' '}
+					: `${count} token${count === 1 ? '' : 's'} changed across both themes.`}{' '}
 				Component tokens in this output are Clay's own property names, so the CSS block
 				works unchanged in a Liferay theme or Style Book. Pattern tokens
 				(<code>--lw-*</code>) are defined by this repo and only apply here.

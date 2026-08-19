@@ -1,4 +1,4 @@
-import {palette} from '../../tokens/palette';
+import {darkPalette, palette} from '../../tokens/palette';
 import {color, type TokenSet} from '../../tokens/types';
 
 /**
@@ -15,21 +15,25 @@ export const navTabsTokens: TokenSet = {
 	label: 'Tabs',
 	tokens: [
 		color('--nav-tabs-link-color', 'Tab · text', palette.gray500, {
+			dark: darkPalette.textMuted,
 			prop: 'color',
 			state: 'default',
 			variant: 'tab',
 		}),
 		color('--nav-tabs-link-hover-border-color', 'Tab · border', palette.gray300, {
+			dark: darkPalette.surface3,
 			prop: 'border-color',
 			state: 'hover',
 			variant: 'tab',
 		}),
 		color('--nav-tabs-link-active-color', 'Tab · text', palette.blue500, {
+			dark: darkPalette.primaryHover,
 			prop: 'color',
 			state: 'active',
 			variant: 'tab',
 		}),
 		color('--nav-tabs-link-active-border-color', 'Tab · border', palette.blue500, {
+			dark: darkPalette.primaryHover,
 			prop: 'border-color',
 			state: 'active',
 			variant: 'tab',
@@ -40,12 +44,14 @@ export const navTabsTokens: TokenSet = {
 			variant: 'tab',
 		}),
 		color('--nav-tabs-link-disabled-color', 'Tab · text', palette.gray400, {
+			dark: darkPalette.textFaint,
 			prop: 'color',
 			state: 'disabled',
 			variant: 'tab',
 		}),
 		color('--nav-link-disabled-color', 'Nav link · disabled', palette.gray400),
 		{
+			dark: darkPalette.textFaint,
 			cssVar: '--nav-tabs-border-width',
 			label: 'Indicator width',
 			type: 'length',

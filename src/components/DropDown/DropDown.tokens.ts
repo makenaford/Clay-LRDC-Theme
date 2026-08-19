@@ -1,4 +1,4 @@
-import {palette} from '../../tokens/palette';
+import {darkPalette, palette} from '../../tokens/palette';
 import {color, type TokenSet} from '../../tokens/types';
 
 /**
@@ -15,42 +15,49 @@ export const dropDownTokens: TokenSet = {
 	kind: 'component',
 	label: 'Dropdown',
 	tokens: [
-		color('--dropdown-background-color', 'Menu · surface', palette.white),
-		color('--dropdown-border-color', 'Menu · border', palette.gray200),
-		color('--dropdown-color', 'Menu · text', palette.gray900),
+		color('--dropdown-background-color', 'Menu · surface', palette.white, {dark: darkPalette.surface1}),
+		color('--dropdown-border-color', 'Menu · border', palette.gray200, {dark: darkPalette.border}),
+		color('--dropdown-color', 'Menu · text', palette.gray900, {dark: darkPalette.text}),
 		color('--dropdown-item-color', 'Item · text', palette.gray900, {
+			dark: darkPalette.text,
 			prop: 'color',
 			state: 'default',
 			variant: 'item',
 		}),
 		color('--dropdown-item-hover-background-color', 'Item · background', palette.blue50, {
+			dark: darkPalette.surface2,
 			prop: 'background-color',
 			state: 'hover',
 			variant: 'item',
 		}),
 		color('--dropdown-item-hover-color', 'Item · text', palette.blue700, {
+			dark: darkPalette.primaryHover,
 			prop: 'color',
 			state: 'hover',
 			variant: 'item',
 		}),
 		color('--dropdown-item-active-background-color', 'Item · background', palette.blue100, {
+			dark: darkPalette.surface3,
 			prop: 'background-color',
 			state: 'active',
 			variant: 'item',
 		}),
 		color('--dropdown-item-active-color', 'Item · text', palette.blue800, {
+			dark: darkPalette.primaryActive,
 			prop: 'color',
 			state: 'active',
 			variant: 'item',
 		}),
 		color('--dropdown-item-disabled-color', 'Item · text', palette.gray400, {
+			dark: darkPalette.textFaint,
 			prop: 'color',
 			state: 'disabled',
 			variant: 'item',
 		}),
-		color('--dropdown-header-color', 'Section header', palette.gray500),
+		color('--dropdown-header-color', 'Section header', palette.gray500, {dark: darkPalette.textMuted}),
 		color('--dropdown-divider-bg', 'Divider', palette.gray200),
 		{
+			dark: darkPalette.surface3,
 			cssVar: '--dropdown-border-radius',
 			label: 'Corner radius',
 			type: 'length',

@@ -8,6 +8,7 @@ import {
 	patternTokenSets,
 } from '../tokens/registry';
 import {useTokenStore} from '../theme/tokenStore';
+import {THEME_MODES} from '../tokens/types';
 import {ExportPanel} from './ExportPanel';
 import {StateMatrix} from './StateMatrix';
 import {TokenEditor} from './TokenEditor';
@@ -82,6 +83,33 @@ function NavRow({
 	);
 }
 
+/**
+ * Switches which theme is previewed and edited.
+ *
+ * Both themes are always live in the store — this only changes which one is written to the document
+ * and which one the token editor targets. Editing a colour in dark mode does not touch its light
+ * counterpart, which is the whole reason the two are kept as separate value maps.
+ */
+function ThemeToggle() {
+	const {mode, setMode} = useTokenStore();
+
+	return (
+		<div className="lw-wb-mode" role="group" aria-label="Theme">
+			{THEME_MODES.map((themeMode) => (
+				<button
+					aria-pressed={themeMode === mode}
+					className={`lw-wb-mode__button${themeMode === mode ? ' is-active' : ''}`}
+					key={themeMode}
+					onClick={() => setMode(themeMode)}
+					type="button"
+				>
+					{themeMode === 'dark' ? 'Dark' : 'Light'}
+				</button>
+			))}
+		</div>
+	);
+}
+
 export function Workbench() {
 	const [view, setView] = useState<View>({kind: 'page'});
 
@@ -99,6 +127,10 @@ export function Workbench() {
 					<strong>Clay Workbench</strong>
 
 					<span>liferay.com</span>
+				</div>
+
+				<div className="lw-wb-nav__section">
+					<ThemeToggle />
 				</div>
 
 				<div className="lw-wb-nav__section">

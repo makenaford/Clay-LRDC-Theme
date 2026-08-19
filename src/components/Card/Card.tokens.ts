@@ -1,4 +1,4 @@
-import {palette} from '../../tokens/palette';
+import {darkPalette, palette} from '../../tokens/palette';
 import {color, type TokenSet} from '../../tokens/types';
 
 /**
@@ -16,29 +16,34 @@ export const cardTokens: TokenSet = {
 	label: 'Card',
 	tokens: [
 		color('--card-bg', 'Surface', palette.white, {
+			dark: darkPalette.surface0,
 			prop: 'background-color',
 			state: 'default',
 			variant: 'card',
 		}),
 		color('--card-color', 'Body text', palette.gray900, {
+			dark: darkPalette.text,
 			prop: 'color',
 			state: 'default',
 			variant: 'card',
 		}),
 		color('--card-border-color', 'Border', palette.gray200, {
+			dark: darkPalette.surface2,
 			prop: 'border-color',
 			state: 'default',
 			variant: 'card',
 		}),
 		color('--card-header-background-color', 'Header · background', 'transparent'),
-		color('--card-header-color', 'Header · text', palette.gray900),
-		color('--card-footer-background-color', 'Footer · background', palette.gray50),
+		color('--card-header-color', 'Header · text', palette.gray900, {dark: darkPalette.text}),
+		color('--card-footer-background-color', 'Footer · background', palette.gray50, {dark: darkPalette.surface1}),
 		color('--card-link-color', 'Card link', palette.blue500, {
+			dark: darkPalette.primaryHover,
 			prop: 'color',
 			state: 'default',
 			variant: 'card-link',
 		}),
 		color('--card-link-hover-color', 'Card link', palette.blue600, {
+			dark: darkPalette.primaryActive,
 			prop: 'color',
 			state: 'hover',
 			variant: 'card-link',

@@ -7,11 +7,15 @@ function isPickable(value: string): boolean {
 }
 
 function TokenRow({token}: {token: Token}) {
-	const {setValue, values} = useTokenStore();
+	const {mode, setValue, values} = useTokenStore();
 
-	const value = values[token.cssVar] ?? token.value;
+	// The shipped default depends on which theme is being edited — a token with no `dark` value
+	// falls back to its light one, meaning "the same in both themes".
+	const shipped = mode === 'dark' ? (token.dark ?? token.value) : token.value;
 
-	const dirty = value !== token.value;
+	const value = values[token.cssVar] ?? shipped;
+
+	const dirty = value !== shipped;
 
 	return (
 		<div className={`lw-wb-token${dirty ? ' lw-wb-token--dirty' : ''}`}>
@@ -27,7 +31,7 @@ function TokenRow({token}: {token: Token}) {
 				{dirty ? (
 					<button
 						className="lw-wb-token__revert"
-						onClick={() => setValue(token.cssVar, token.value)}
+						onClick={() => setValue(token.cssVar, shipped)}
 						title="Revert this token"
 						type="button"
 					>
@@ -60,6 +64,12 @@ function TokenRow({token}: {token: Token}) {
 			</div>
 
 			<code className="lw-wb-token__var">{token.cssVar}</code>
+
+			{!token.dark ? (
+				<p className="lw-wb-token__shared" title="This token has no separate dark value">
+					shared across themes
+				</p>
+			) : null}
 
 			{token.description ? (
 				<p className="lw-wb-token__desc">{token.description}</p>

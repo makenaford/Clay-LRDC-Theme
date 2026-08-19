@@ -56,3 +56,41 @@ export const palette = {
 } as const;
 
 export type PaletteName = keyof typeof palette;
+
+/**
+ * The dark-theme ramp.
+ *
+ * Anchored on values taken from the Figma rather than dimmed by formula. `surface3` is
+ * `Components/Label/lab-tonal-bg` in its dark mode, `text` is `Surfaces/Text/Primary` in its dark
+ * mode, and `canvas` was measured off the exported frame the Label component sits on. The
+ * intermediate steps interpolate between those fixed points.
+ *
+ * The greys read in the opposite direction to the light ramp: `surface0` is the page, `text` the
+ * foreground. That inversion is what lets Clay's own `--gray-*` scale be remapped wholesale, so
+ * components pick up the dark theme without each one needing its own override.
+ */
+export const darkPalette = {
+	// Surfaces, lightest-sitting-on-darkest.
+	canvas: '#070b13', // measured from the Figma frame behind the Label component
+	surface0: '#10161f', // also the stroke colour the LRDC icon set exports with
+	surface1: '#161d28',
+	surface2: '#1f2531', // Figma: the gradient label's text colour, reused here as a raised surface
+	surface3: '#313948', // Figma: Components/Label/lab-tonal-bg, dark mode
+	border: '#3d465a',
+
+	// Foreground, dimmest to brightest.
+	textFaint: '#6b7488',
+	textMuted: '#8b93a5',
+	textDim: '#b4bbc9',
+	text: '#f0f1f5', // Figma: Surfaces/Text/Primary, dark mode
+
+	// Brand, adjusted so hover and active move *away* from a dark background rather than into it.
+	primary: '#3d7dff',
+	primaryHover: '#70a2ff', // Figma: lab-grad-bg-step-01, dark mode
+	primaryActive: '#a8c6ff',
+	primaryTint1: '#1b2b4d',
+	primaryTint2: '#16233d',
+	primaryTint3: '#111a2e',
+
+	accent: '#ba8fff', // Figma: lab-grad-bg-step-02, dark mode
+} as const;

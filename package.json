@@ -11,7 +11,7 @@
   "scripts": {
     "icons": "node scripts/build-icons.mjs",
     "dev": "pnpm icons && vite",
-    "build": "pnpm icons && tsc --noEmit && vite build",
+    "build": "pnpm icons && tsc --noEmit && vite build && node scripts/check-build.mjs",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit"
   },
@@ -27,6 +27,7 @@
     "@clayui/layout": "3.166.0",
     "@clayui/link": "3.166.0",
     "@clayui/nav": "3.166.0",
+    "@fontsource-variable/source-sans-3": "5.2.9",
     "react": "19.2.6",
     "react-dom": "19.2.6"
   },

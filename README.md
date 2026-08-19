@@ -129,6 +129,45 @@ render as nothing.
 
 See [src/icons/README.md](src/icons/README.md).
 
+## Themes
+
+Two themes, **dark by default**. Every token carries a light value and, where the theme changes it,
+a dark one:
+
+```ts
+color('--card-bg', 'Surface', palette.white, {dark: darkPalette.surface0}),
+```
+
+A token with no `dark` is theme-independent — padding, radius, font size — and the editor marks it
+"shared across themes" so you can see at a glance which values you are actually forking.
+
+The toggle in the sidebar switches which theme is previewed *and* edited; the two are separate value
+maps, so changing a colour in dark does not touch its light counterpart. Export emits both, with
+dark on `:root` and light as the override:
+
+```css
+:root                  { --label-primary-background-color: #313948; }
+[data-theme='light']   { --label-primary-background-color: #e7efff; }
+```
+
+That ordering is what makes "dark by default" survive outside this app — a page that never sets
+`data-theme` gets dark.
+
+The dark ramp in [`palette.ts`](src/tokens/palette.ts) is anchored on real values, not dimmed by
+formula: its surfaces and text come from the Figma's own dark mode, and its darkest canvas was
+measured off an exported frame. Clay's `--gray-*` scale is inverted wholesale in dark, which is what
+lets Clay components pick the theme up without each needing a bespoke override.
+
+## Typography
+
+Source Sans 3 is self-hosted via Fontsource — no CDN request, no runtime third party, works offline,
+and it is OFL-1.1 so redistribution is unambiguous. It ships as a variable font split by script with
+`unicode-range`, so an English page downloads one 28 KB latin subset covering every weight.
+
+This matters for fidelity, not just looks: before the font was bundled, components specified in
+Source Sans were being measured in the fallback and rendered ~3px wide. The Label now matches its
+Figma frame at exactly 70x40.
+
 ## Two kinds of token
 
 | | Example | Where it works |

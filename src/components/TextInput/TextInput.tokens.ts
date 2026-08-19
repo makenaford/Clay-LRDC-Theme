@@ -1,4 +1,4 @@
-import {palette} from '../../tokens/palette';
+import {darkPalette, palette} from '../../tokens/palette';
 import {color, type TokenSet} from '../../tokens/types';
 
 /**
@@ -16,55 +16,65 @@ export const textInputTokens: TokenSet = {
 	label: 'Text input',
 	tokens: [
 		color('--input-background-color', 'Background', palette.white, {
+			dark: darkPalette.surface1,
 			prop: 'background-color',
 			state: 'default',
 			variant: 'input',
 		}),
 		color('--input-color', 'Text', palette.gray900, {
+			dark: darkPalette.text,
 			prop: 'color',
 			state: 'default',
 			variant: 'input',
 		}),
 		color('--input-border-color', 'Border', palette.gray300, {
+			dark: darkPalette.border,
 			prop: 'border-color',
 			state: 'default',
 			variant: 'input',
 		}),
 		color('--input-focus-background-color', 'Background', palette.white, {
+			dark: darkPalette.surface1,
 			prop: 'background-color',
 			state: 'focus',
 			variant: 'input',
 		}),
 		color('--input-focus-color', 'Text', palette.gray900, {
+			dark: darkPalette.text,
 			prop: 'color',
 			state: 'focus',
 			variant: 'input',
 		}),
 		color('--input-focus-border-color', 'Border', palette.blue500, {
+			dark: darkPalette.primaryHover,
 			prop: 'border-color',
 			state: 'focus',
 			variant: 'input',
 		}),
 		color('--input-disabled-bg', 'Background', palette.gray100, {
+			dark: darkPalette.surface0,
 			prop: 'background-color',
 			state: 'disabled',
 			variant: 'input',
 		}),
 		color('--input-disabled-color', 'Text', palette.gray400, {
+			dark: darkPalette.textFaint,
 			prop: 'color',
 			state: 'disabled',
 			variant: 'input',
 		}),
 		color('--input-disabled-border-color', 'Border', palette.gray200, {
+			dark: darkPalette.surface2,
 			prop: 'border-color',
 			state: 'disabled',
 			variant: 'input',
 		}),
-		color('--input-label-color', 'Label', palette.gray700),
-		color('--input-label-focus-color', 'Label · focus', palette.blue600),
-		color('--input-danger-border-color', 'Error · border', palette.danger),
+		color('--input-label-color', 'Label', palette.gray700, {dark: darkPalette.textDim}),
+		color('--input-label-focus-color', 'Label · focus', palette.blue600, {dark: darkPalette.primaryHover}),
+		color('--input-danger-border-color', 'Error · border', palette.danger, {dark: '#f78b8b'}),
 		color('--input-danger-color', 'Error · text', palette.danger),
 		{
+			dark: '#f78b8b',
 			cssVar: '--input-focus-box-shadow',
 			description: 'The focus ring. Clay layers this on top of the focus border colour.',
 			label: 'Focus ring',

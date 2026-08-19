@@ -1,4 +1,4 @@
-import {palette} from '../../tokens/palette';
+import {darkPalette, palette} from '../../tokens/palette';
 import {color, type TokenSet} from '../../tokens/types';
 
 export const resourceGridTokens: TokenSet = {
@@ -8,11 +8,12 @@ export const resourceGridTokens: TokenSet = {
 	kind: 'pattern',
 	label: 'Resource grid',
 	tokens: [
-		color('--lw-resource-bg', 'Section background', palette.white),
-		color('--lw-resource-heading-color', 'Section heading', palette.gray900),
-		color('--lw-resource-meta-color', 'Card meta text', palette.gray500),
+		color('--lw-resource-bg', 'Section background', palette.white, {dark: darkPalette.canvas}),
+		color('--lw-resource-heading-color', 'Section heading', palette.gray900, {dark: darkPalette.text}),
+		color('--lw-resource-meta-color', 'Card meta text', palette.gray500, {dark: darkPalette.textMuted}),
 		color('--lw-resource-thumb-bg', 'Thumbnail placeholder', palette.gray100),
 		{
+			dark: darkPalette.surface2,
 			cssVar: '--lw-resource-gap',
 			label: 'Grid gap',
 			type: 'length',

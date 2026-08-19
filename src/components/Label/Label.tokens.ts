@@ -37,12 +37,14 @@ export const labelTokens: TokenSet = {
 	tokens: [
 		// --- Tonal (Clay `.label-primary`) -----------------------------------------------------
 		color('--label-primary-background-color', 'Tonal · background', palette.blue100, {
+			dark: '#313948',
 			description: 'Figma Components/Label/lab-tonal-bg. Dark mode: #313948.',
 			prop: 'background-color',
 			state: 'default',
 			variant: 'tonal',
 		}),
 		color('--label-primary-color', 'Tonal · text', '#00256c', {
+			dark: '#ffffff',
 			description: 'Figma Components/Label/lab-tonal-text. Dark mode: #ffffff.',
 			prop: 'color',
 			state: 'default',
@@ -58,11 +60,13 @@ export const labelTokens: TokenSet = {
 		// derived one step along the existing blue ramp so a linked label gives some feedback, and
 		// are the first thing to check with design rather than to trust.
 		color('--label-primary-hover-background-color', 'Tonal · background', palette.blue200, {
+			dark: '#3d465a',
 			prop: 'background-color',
 			state: 'hover',
 			variant: 'tonal',
 		}),
 		color('--label-primary-hover-color', 'Tonal · text', '#00256c', {
+			dark: '#ffffff',
 			prop: 'color',
 			state: 'hover',
 			variant: 'tonal',
@@ -73,11 +77,13 @@ export const labelTokens: TokenSet = {
 			variant: 'tonal',
 		}),
 		color('--label-primary-focus-background-color', 'Tonal · background', palette.blue200, {
+			dark: '#3d465a',
 			prop: 'background-color',
 			state: 'focus',
 			variant: 'tonal',
 		}),
 		color('--label-primary-focus-color', 'Tonal · text', palette.blue800, {
+			dark: '#ffffff',
 			prop: 'color',
 			state: 'focus',
 			variant: 'tonal',
@@ -90,6 +96,7 @@ export const labelTokens: TokenSet = {
 			variant: 'outline',
 		}),
 		color('--label-secondary-color', 'Outline · text', '#262c37', {
+			dark: '#f0f1f5',
 			description: 'Figma Surfaces/Text/Primary. Dark mode: #f0f1f5.',
 			prop: 'color',
 			state: 'default',
@@ -102,31 +109,37 @@ export const labelTokens: TokenSet = {
 			variant: 'outline',
 		}),
 		color('--label-secondary-hover-background-color', 'Outline · background', palette.blue50, {
+			dark: '#16233d',
 			prop: 'background-color',
 			state: 'hover',
 			variant: 'outline',
 		}),
 		color('--label-secondary-hover-color', 'Outline · text', palette.blue800, {
+			dark: '#a8c6ff',
 			prop: 'color',
 			state: 'hover',
 			variant: 'outline',
 		}),
 		color('--label-secondary-hover-border-color', 'Outline · border', palette.blue600, {
+			dark: '#70a2ff',
 			prop: 'border-color',
 			state: 'hover',
 			variant: 'outline',
 		}),
 		color('--label-secondary-focus-background-color', 'Outline · background', palette.blue50, {
+			dark: '#16233d',
 			prop: 'background-color',
 			state: 'focus',
 			variant: 'outline',
 		}),
 		color('--label-secondary-focus-color', 'Outline · text', palette.blue800, {
+			dark: '#a8c6ff',
 			prop: 'color',
 			state: 'focus',
 			variant: 'outline',
 		}),
 		color('--label-secondary-focus-border-color', 'Outline · border', palette.blue800, {
+			dark: '#a8c6ff',
 			prop: 'border-color',
 			state: 'focus',
 			variant: 'outline',
@@ -134,12 +147,14 @@ export const labelTokens: TokenSet = {
 
 		// --- Gradient (no Clay equivalent) ------------------------------------------------------
 		color('--lw-label-gradient-from', 'Gradient · from', '#edf3ff', {
+			dark: '#70a2ff',
 			description: 'Figma Components/Label/lab-grad-bg-step-01. Dark mode: #70a2ff.',
 			prop: 'background-color',
 			state: 'default',
 			variant: 'gradient',
 		}),
 		color('--lw-label-gradient-to', 'Gradient · to', '#ede2ff', {
+			dark: '#ba8fff',
 			description: 'Figma Components/Label/lab-grad-bg-step-02. Dark mode: #ba8fff.',
 		}),
 		color('--lw-label-gradient-color', 'Gradient · text', '#1f2531', {

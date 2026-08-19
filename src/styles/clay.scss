@@ -14,6 +14,13 @@
 // which is why overriding `--btn-primary-hover-background-color` works there too. Tokens edited in
 // this repo therefore transfer to a real Liferay theme unchanged.
 
+// Do NOT add a file to this directory whose name collides with one of the Clay partials imported
+// below — `components`, `variables`, `mixins`. Sass resolves an `@import` against the importing
+// file's own directory *before* the load path, so a sibling `components.css` silently shadows
+// Clay's `_components.scss`: the build still succeeds, and the entire framework vanishes from the
+// output. That is why the local overrides file is called `component-overrides.css`.
+// `scripts/check-build.mjs` guards against this regressing.
+
 @import 'functions/global-functions';
 @import 'atlas-custom-properties/variables';
 @import 'atlas/variables';

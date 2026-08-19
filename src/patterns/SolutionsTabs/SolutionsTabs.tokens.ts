@@ -1,4 +1,4 @@
-import {palette} from '../../tokens/palette';
+import {darkPalette, palette} from '../../tokens/palette';
 import {color, type TokenSet} from '../../tokens/types';
 
 export const solutionsTabsTokens: TokenSet = {
@@ -8,12 +8,13 @@ export const solutionsTabsTokens: TokenSet = {
 	kind: 'pattern',
 	label: 'Solutions tabs',
 	tokens: [
-		color('--lw-solutions-bg', 'Section background', palette.white),
-		color('--lw-solutions-panel-bg', 'Panel background', palette.gray50),
-		color('--lw-solutions-panel-border', 'Panel border', palette.gray200),
-		color('--lw-solutions-heading-color', 'Panel heading', palette.gray900),
+		color('--lw-solutions-bg', 'Section background', palette.white, {dark: darkPalette.canvas}),
+		color('--lw-solutions-panel-bg', 'Panel background', palette.gray50, {dark: darkPalette.surface1}),
+		color('--lw-solutions-panel-border', 'Panel border', palette.gray200, {dark: darkPalette.border}),
+		color('--lw-solutions-heading-color', 'Panel heading', palette.gray900, {dark: darkPalette.text}),
 		color('--lw-solutions-body-color', 'Panel copy', palette.gray600),
 		{
+			dark: darkPalette.textDim,
 			cssVar: '--lw-solutions-panel-radius',
 			label: 'Panel radius',
 			type: 'length',

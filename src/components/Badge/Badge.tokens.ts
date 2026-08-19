@@ -1,4 +1,4 @@
-import {palette} from '../../tokens/palette';
+import {darkPalette, palette} from '../../tokens/palette';
 import {color, type TokenSet} from '../../tokens/types';
 
 /**
@@ -13,11 +13,13 @@ export const badgeTokens: TokenSet = {
 	label: 'Badge',
 	tokens: [
 		color('--badge-primary-background-color', 'Primary · background', palette.blue50, {
+			dark: darkPalette.primaryTint1,
 			prop: 'background-color',
 			state: 'default',
 			variant: 'primary',
 		}),
 		color('--badge-primary-color', 'Primary · label', palette.blue700, {
+			dark: darkPalette.primaryHover,
 			prop: 'color',
 			state: 'default',
 			variant: 'primary',
@@ -28,11 +30,13 @@ export const badgeTokens: TokenSet = {
 			variant: 'primary',
 		}),
 		color('--badge-primary-hover-background-color', 'Primary · background', palette.blue100, {
+			dark: '#22365e',
 			prop: 'background-color',
 			state: 'hover',
 			variant: 'primary',
 		}),
 		color('--badge-primary-hover-color', 'Primary · label', palette.blue800, {
+			dark: darkPalette.primaryActive,
 			prop: 'color',
 			state: 'hover',
 			variant: 'primary',
@@ -43,28 +47,33 @@ export const badgeTokens: TokenSet = {
 			variant: 'primary',
 		}),
 		color('--badge-secondary-background-color', 'Secondary · background', palette.gray100, {
+			dark: darkPalette.surface1,
 			prop: 'background-color',
 			state: 'default',
 			variant: 'secondary',
 		}),
 		color('--badge-secondary-color', 'Secondary · label', palette.gray600, {
+			dark: darkPalette.textDim,
 			prop: 'color',
 			state: 'default',
 			variant: 'secondary',
 		}),
 		color('--badge-secondary-hover-background-color', 'Secondary · background', palette.gray200, {
+			dark: darkPalette.surface2,
 			prop: 'background-color',
 			state: 'hover',
 			variant: 'secondary',
 		}),
 		color('--badge-secondary-hover-color', 'Secondary · label', palette.gray900, {
+			dark: darkPalette.text,
 			prop: 'color',
 			state: 'hover',
 			variant: 'secondary',
 		}),
-		color('--badge-success-background-color', 'Success · background', palette.successLight),
+		color('--badge-success-background-color', 'Success · background', palette.successLight, {dark: '#14371f'}),
 		color('--badge-success-color', 'Success · label', palette.success),
 		{
+			dark: palette.successLight,
 			cssVar: '--badge-border-radius',
 			label: 'Corner radius',
 			type: 'length',

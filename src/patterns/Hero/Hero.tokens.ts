@@ -1,4 +1,4 @@
-import {palette} from '../../tokens/palette';
+import {darkPalette, palette} from '../../tokens/palette';
 import {color, type TokenSet} from '../../tokens/types';
 
 export const heroTokens: TokenSet = {
@@ -8,15 +8,17 @@ export const heroTokens: TokenSet = {
 	kind: 'pattern',
 	label: 'Hero',
 	tokens: [
-		color('--lw-hero-bg', 'Background', palette.gray900),
+		color('--lw-hero-bg', 'Background', palette.gray900, {dark: darkPalette.canvas}),
 		color('--lw-hero-bg-accent', 'Background accent', palette.blue900, {
+			dark: '#231a5e',
 			description: 'The second stop of the hero gradient.',
 		}),
-		color('--lw-hero-heading-color', 'Headline', palette.white),
-		color('--lw-hero-body-color', 'Supporting copy', palette.gray300),
+		color('--lw-hero-heading-color', 'Headline', palette.white, {dark: darkPalette.text}),
+		color('--lw-hero-body-color', 'Supporting copy', palette.gray300, {dark: darkPalette.textDim}),
 		color('--lw-hero-eyebrow-color', 'Eyebrow', palette.cyan),
 		color('--lw-hero-rating-color', 'Rating badge text', palette.white),
 		{
+			dark: darkPalette.text,
 			cssVar: '--lw-hero-padding-y',
 			label: 'Vertical padding',
 			type: 'length',

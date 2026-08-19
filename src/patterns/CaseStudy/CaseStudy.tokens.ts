@@ -1,4 +1,4 @@
-import {palette} from '../../tokens/palette';
+import {darkPalette, palette} from '../../tokens/palette';
 import {color, type TokenSet} from '../../tokens/types';
 
 export const caseStudyTokens: TokenSet = {
@@ -7,13 +7,14 @@ export const caseStudyTokens: TokenSet = {
 	kind: 'pattern',
 	label: 'Case study',
 	tokens: [
-		color('--lw-case-bg', 'Section background', palette.blue900),
-		color('--lw-case-heading-color', 'Heading', palette.white),
-		color('--lw-case-body-color', 'Copy', palette.blue200),
+		color('--lw-case-bg', 'Section background', palette.blue900, {dark: darkPalette.surface2}),
+		color('--lw-case-heading-color', 'Heading', palette.white, {dark: darkPalette.text}),
+		color('--lw-case-body-color', 'Copy', palette.blue200, {dark: darkPalette.textDim}),
 		color('--lw-case-quote-color', 'Pull quote', palette.cyan),
-		color('--lw-case-media-bg', 'Media placeholder', palette.blue800),
+		color('--lw-case-media-bg', 'Media placeholder', palette.blue800, {dark: darkPalette.surface3}),
 		color('--lw-case-metric-color', 'Metric figure', palette.white),
 		{
+			dark: darkPalette.text,
 			cssVar: '--lw-case-padding-y',
 			label: 'Section padding',
 			type: 'length',
