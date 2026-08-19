@@ -1,0 +1,40 @@
+{
+  "name": "liferay-clay-workbench",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A Clay-based component + pattern library modelled on liferay.com, where every colour, interaction state and pattern is editable from a single token file per component.",
+  "packageManager": "pnpm@11.22.0",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@clayui/alert": "3.166.0",
+    "@clayui/badge": "3.166.0",
+    "@clayui/button": "3.166.0",
+    "@clayui/card": "3.166.0",
+    "@clayui/css": "3.166.0",
+    "@clayui/drop-down": "3.166.0",
+    "@clayui/form": "3.166.0",
+    "@clayui/icon": "3.166.0",
+    "@clayui/layout": "3.166.0",
+    "@clayui/link": "3.166.0",
+    "@clayui/nav": "3.166.0",
+    "react": "19.2.6",
+    "react-dom": "19.2.6"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.15",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.2",
+    "typescript": "5.9.3",
+    "vite": "8.0.13",
+    "sass": "1.99.0"
+  }
+}

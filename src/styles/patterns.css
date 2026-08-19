@@ -1,0 +1,458 @@
+/*
+ * Pattern styles.
+ *
+ * Every value here reads from an `--lw-*` custom property declared in a pattern's `.tokens.ts`, with
+ * the shipped default as the `var()` fallback — the same contract Clay uses for its own components.
+ * That means a pattern renders correctly even before the token store has written anything to the
+ * DOM, and editing a token restyles it with no rebuild.
+ *
+ * Nothing in this file styles a Clay component. Buttons, cards, badges and tabs inside these
+ * sections are left alone deliberately, so they keep inheriting from their own component tokens.
+ */
+
+.lw-container {
+	margin: 0 auto;
+	max-width: 74rem;
+	padding: 0 1.5rem;
+	width: 100%;
+}
+
+.lw-page {
+	background: var(--body-background-color, #fff);
+}
+
+/* --- Site header ------------------------------------------------------------------------- */
+
+.lw-header {
+	background: var(--lw-header-bg, #fff);
+	border-bottom: 1px solid var(--lw-header-border, #e7e7ed);
+	box-shadow: var(--lw-header-shadow, 0 1px 0 rgba(39, 40, 51, 0.06));
+}
+
+.lw-header__utility {
+	background: var(--lw-header-utility-bg, #f7f8f9);
+	color: var(--lw-header-utility-color, #6b6c7e);
+	font-size: 0.8125rem;
+}
+
+.lw-header__utility-inner {
+	display: flex;
+	gap: 1.25rem;
+	justify-content: flex-end;
+	padding-bottom: 0.375rem;
+	padding-top: 0.375rem;
+}
+
+.lw-header__bar {
+	align-items: center;
+	display: flex;
+	gap: 2rem;
+	min-height: var(--lw-header-height, 4.5rem);
+}
+
+.lw-header__logo {
+	color: var(--primary, #0b5fff);
+	font-size: 1.375rem;
+	font-weight: 700;
+	letter-spacing: -0.01em;
+	text-decoration: none;
+}
+
+.lw-header__nav {
+	display: flex;
+	flex: 1;
+	gap: 1.5rem;
+}
+
+.lw-header__link {
+	color: var(--lw-header-link-color, #272833);
+	font-size: 0.9375rem;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.lw-header__link:hover {
+	color: var(--lw-header-link-hover-color, #0b5fff);
+}
+
+.lw-header__actions {
+	display: flex;
+	gap: 0.75rem;
+}
+
+/* --- Hero -------------------------------------------------------------------------------- */
+
+.lw-hero {
+	background: linear-gradient(
+		135deg,
+		var(--lw-hero-bg, #272833) 0%,
+		var(--lw-hero-bg-accent, #1514a4) 100%
+	);
+	padding-bottom: var(--lw-hero-padding-y, 5rem);
+	padding-top: var(--lw-hero-padding-y, 5rem);
+}
+
+.lw-hero__inner {
+	max-width: 46rem;
+}
+
+.lw-hero__eyebrow {
+	color: var(--lw-hero-eyebrow-color, #47fffc);
+	font-size: 0.8125rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	margin: 0 0 1rem;
+	text-transform: uppercase;
+}
+
+.lw-hero__heading {
+	color: var(--lw-hero-heading-color, #fff);
+	font-size: var(--lw-hero-heading-size, 3.25rem);
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	line-height: 1.1;
+	margin: 0 0 1.25rem;
+}
+
+.lw-hero__body {
+	color: var(--lw-hero-body-color, #e7e7ed);
+	font-size: 1.125rem;
+	line-height: 1.6;
+	margin: 0 0 2rem;
+	max-width: 34rem;
+}
+
+.lw-hero__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+}
+
+/*
+ * The ghost button is the one place a pattern touches a Clay component's colours. On the dark hero
+ * the outline variant's own tokens would render near-invisible, so the pattern re-points them for
+ * this context only — scoped to `.lw-hero`, using Clay's property names, so the Button token panel
+ * still describes what happens everywhere else.
+ */
+.lw-hero__ghost {
+	--btn-outline-primary-border-color: var(--lw-hero-body-color, #e7e7ed);
+	--btn-outline-primary-color: var(--lw-hero-heading-color, #fff);
+	--btn-outline-primary-hover-background-color: var(--lw-hero-heading-color, #fff);
+	--btn-outline-primary-hover-border-color: var(--lw-hero-heading-color, #fff);
+	--btn-outline-primary-hover-color: var(--lw-hero-bg, #272833);
+}
+
+.lw-hero__rating {
+	color: var(--lw-hero-rating-color, #fff);
+	font-size: 0.875rem;
+	margin: 1.75rem 0 0;
+	opacity: 0.85;
+}
+
+/* --- Logo bar ---------------------------------------------------------------------------- */
+
+.lw-logobar {
+	background: var(--lw-logobar-bg, #fff);
+	padding-bottom: var(--lw-logobar-padding-y, 2.5rem);
+	padding-top: var(--lw-logobar-padding-y, 2.5rem);
+}
+
+.lw-logobar__label {
+	color: var(--lw-logobar-label-color, #6b6c7e);
+	font-size: 0.875rem;
+	margin: 0 0 1.25rem;
+	text-align: center;
+}
+
+.lw-logobar__list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2.5rem;
+	justify-content: center;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.lw-logobar__logo {
+	color: var(--lw-logobar-logo-color, #a7a9bc);
+	font-size: 1.25rem;
+	font-weight: 700;
+	letter-spacing: -0.01em;
+	transition: color 0.15s ease;
+}
+
+.lw-logobar__logo:hover {
+	color: var(--lw-logobar-logo-hover-color, #3f404b);
+}
+
+/* --- Capability grid --------------------------------------------------------------------- */
+
+.lw-capability {
+	background: var(--lw-capability-bg, #f7f8f9);
+	padding-bottom: var(--lw-capability-padding-y, 4rem);
+	padding-top: var(--lw-capability-padding-y, 4rem);
+}
+
+.lw-capability__heading {
+	color: var(--lw-capability-heading-color, #272833);
+	font-size: 2rem;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	margin: 0 0 2rem;
+}
+
+.lw-capability__grid {
+	display: grid;
+	gap: var(--lw-capability-gap, 1.5rem);
+	grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.lw-capability__icon {
+	align-items: center;
+	background: var(--lw-capability-icon-bg, #edf3fe);
+	border-radius: 0.5rem;
+	color: var(--lw-capability-icon-color, #0b5fff);
+	display: inline-flex;
+	font-size: 0.8125rem;
+	font-weight: 700;
+	height: 2.5rem;
+	justify-content: center;
+	margin-bottom: 1rem;
+	transition: background-color 0.15s ease, color 0.15s ease;
+	width: 2.5rem;
+}
+
+.lw-capability__card:hover .lw-capability__icon {
+	background: var(--lw-capability-icon-hover-bg, #0b5fff);
+	color: var(--lw-capability-icon-hover-color, #fff);
+}
+
+/* --- Solutions --------------------------------------------------------------------------- */
+
+.lw-solutions {
+	background: var(--lw-solutions-bg, #fff);
+	padding-bottom: var(--lw-solutions-padding-y, 4rem);
+	padding-top: var(--lw-solutions-padding-y, 4rem);
+}
+
+.lw-solutions__heading {
+	color: var(--lw-solutions-heading-color, #272833);
+	font-size: 2rem;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	margin: 0 0 1.5rem;
+}
+
+.lw-solutions__panel {
+	background: var(--lw-solutions-panel-bg, #f7f8f9);
+	border: 1px solid var(--lw-solutions-panel-border, #e7e7ed);
+	border-radius: var(--lw-solutions-panel-radius, 0.75rem);
+	border-top-left-radius: 0;
+	padding: 2rem;
+}
+
+.lw-solutions__panel-heading {
+	color: var(--lw-solutions-heading-color, #272833);
+	font-size: 1.375rem;
+	font-weight: 700;
+	margin: 0 0 0.75rem;
+}
+
+.lw-solutions__panel-body {
+	color: var(--lw-solutions-body-color, #54555f);
+	line-height: 1.6;
+	margin: 0 0 1.5rem;
+	max-width: 40rem;
+}
+
+/* --- Case study -------------------------------------------------------------------------- */
+
+.lw-case {
+	background: var(--lw-case-bg, #1514a4);
+	padding-bottom: var(--lw-case-padding-y, 4.5rem);
+	padding-top: var(--lw-case-padding-y, 4.5rem);
+}
+
+.lw-case__inner {
+	align-items: center;
+	display: grid;
+	gap: 3rem;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+}
+
+.lw-case__media {
+	align-items: center;
+	aspect-ratio: 4 / 3;
+	background: var(--lw-case-media-bg, #00318f);
+	border-radius: var(--lw-case-media-radius, 0.75rem);
+	color: var(--lw-case-body-color, #b3cdff);
+	display: flex;
+	font-size: 0.875rem;
+	justify-content: center;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.lw-case__heading {
+	color: var(--lw-case-heading-color, #fff);
+	font-size: 2rem;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	margin: 0 0 1rem;
+}
+
+.lw-case__body {
+	color: var(--lw-case-body-color, #b3cdff);
+	font-size: 1.0625rem;
+	line-height: 1.6;
+	margin: 0 0 1.25rem;
+}
+
+.lw-case__quote {
+	border-left: 3px solid var(--lw-case-quote-color, #47fffc);
+	color: var(--lw-case-quote-color, #47fffc);
+	font-size: 1.125rem;
+	font-style: italic;
+	margin: 0 0 1.75rem;
+	padding-left: 1rem;
+}
+
+.lw-case__metrics {
+	display: flex;
+	gap: 2.5rem;
+	margin: 0 0 1.75rem;
+}
+
+.lw-case__metrics dt {
+	color: var(--lw-case-body-color, #b3cdff);
+	font-size: 0.8125rem;
+	margin-bottom: 0.25rem;
+	text-transform: uppercase;
+}
+
+.lw-case__metrics dd {
+	color: var(--lw-case-metric-color, #fff);
+	font-size: 1.75rem;
+	font-weight: 700;
+	margin: 0;
+}
+
+.lw-case__cta {
+	--btn-outline-primary-border-color: var(--lw-case-body-color, #b3cdff);
+	--btn-outline-primary-color: var(--lw-case-heading-color, #fff);
+	--btn-outline-primary-hover-background-color: var(--lw-case-heading-color, #fff);
+	--btn-outline-primary-hover-border-color: var(--lw-case-heading-color, #fff);
+	--btn-outline-primary-hover-color: var(--lw-case-bg, #1514a4);
+}
+
+/* --- Resource grid ----------------------------------------------------------------------- */
+
+.lw-resource {
+	background: var(--lw-resource-bg, #fff);
+	padding-bottom: var(--lw-resource-padding-y, 4rem);
+	padding-top: var(--lw-resource-padding-y, 4rem);
+}
+
+.lw-resource__heading {
+	color: var(--lw-resource-heading-color, #272833);
+	font-size: 2rem;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	margin: 0 0 2rem;
+}
+
+.lw-resource__grid {
+	display: grid;
+	gap: var(--lw-resource-gap, 1.5rem);
+	grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+}
+
+.lw-resource__thumb {
+	aspect-ratio: 16 / 9;
+	background: var(--lw-resource-thumb-bg, #f1f2f5);
+	border-top-left-radius: inherit;
+	border-top-right-radius: inherit;
+}
+
+.lw-resource__title {
+	margin-top: 0.75rem;
+}
+
+.lw-resource__meta {
+	color: var(--lw-resource-meta-color, #6b6c7e);
+	font-size: 0.8125rem;
+	margin: 0 0 0.75rem;
+}
+
+/* --- Site footer ------------------------------------------------------------------------- */
+
+.lw-footer {
+	background: var(--lw-footer-bg, #272833);
+	padding-bottom: var(--lw-footer-padding-y, 3.5rem);
+	padding-top: var(--lw-footer-padding-y, 3.5rem);
+}
+
+.lw-footer__columns {
+	display: grid;
+	gap: 2rem;
+	grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+}
+
+.lw-footer__heading {
+	color: var(--lw-footer-heading-color, #fff);
+	font-size: 0.875rem;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	margin: 0 0 1rem;
+	text-transform: uppercase;
+}
+
+.lw-footer__list {
+	display: grid;
+	gap: 0.625rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.lw-footer__link {
+	color: var(--lw-footer-link-color, #a7a9bc);
+	font-size: 0.9375rem;
+	text-decoration: none;
+}
+
+.lw-footer__link:hover {
+	color: var(--lw-footer-link-hover-color, #fff);
+	text-decoration: underline;
+}
+
+.lw-footer__legal {
+	border-top: 1px solid var(--lw-footer-divider, #3f404b);
+	color: var(--lw-footer-legal-color, #6b6c7e);
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 0.8125rem;
+	gap: 1rem;
+	justify-content: space-between;
+	margin-top: 2.5rem;
+	padding-top: 1.5rem;
+}
+
+.lw-footer__legal a {
+	margin-left: 1.25rem;
+}
+
+@media (max-width: 60rem) {
+	.lw-case__inner {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.lw-header__nav {
+		display: none;
+	}
+
+	.lw-hero__heading {
+		font-size: 2.25rem;
+	}
+}
