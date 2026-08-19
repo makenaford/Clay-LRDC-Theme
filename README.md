@@ -94,6 +94,11 @@ src/
 └── styles/         Clay custom-properties build · pattern CSS · workbench chrome
 ```
 
+Components sourced from Figma record their origin node and their Figma variable names in the token
+descriptions, so a value can always be traced back to the design — see
+[`Label.tokens.ts`](src/components/Label/Label.tokens.ts), built from
+"Solutions Library- 2026" node `15121:237267`.
+
 The palette in [`src/tokens/palette.ts`](src/tokens/palette.ts) was read off liferay.com's own
 stylesheets rather than eyeballed — `#0b5fff` primary, `#0053f0` hover, `#00318f` active, and the
 Lexicon neutral ramp.

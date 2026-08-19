@@ -78,7 +78,7 @@ const shape: Token[] = [
 		cssVar: '--body-font-family',
 		label: 'Font family',
 		type: 'text',
-		value: "'Source Sans Pro', -apple-system, system-ui, sans-serif",
+		value: "'Source Sans 3', 'Source Sans Pro', -apple-system, system-ui, sans-serif",
 	},
 	{
 		cssVar: '--body-font-size',

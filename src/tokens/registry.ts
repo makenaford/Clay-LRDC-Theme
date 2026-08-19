@@ -3,6 +3,7 @@ import {badgeSpec} from '../components/Badge/Badge';
 import {buttonSpec} from '../components/Button/Button';
 import {cardSpec} from '../components/Card/Card';
 import {dropDownSpec} from '../components/DropDown/DropDown';
+import {labelSpec} from '../components/Label/Label';
 import {linkSpec} from '../components/Link/Link';
 import {navTabsSpec} from '../components/NavTabs/NavTabs';
 import {textInputSpec} from '../components/TextInput/TextInput';
@@ -29,6 +30,7 @@ export const componentSpecs: ComponentSpec[] = [
 	buttonSpec,
 	cardSpec,
 	badgeSpec,
+	labelSpec,
 	alertSpec,
 	textInputSpec,
 	dropDownSpec,

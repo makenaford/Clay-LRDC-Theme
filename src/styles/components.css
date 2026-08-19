@@ -1,0 +1,102 @@
+/*
+ * Component CSS — only for what Clay genuinely cannot express through its own properties.
+ *
+ * Everything a Clay component can already do is done with Clay's custom properties and no CSS at
+ * all; that is the point of the token layer. This file is for the few cases where a design needs
+ * something Clay has no property for, and each rule below says which case it is.
+ *
+ * Loaded after Clay and before the workbench chrome.
+ */
+
+/* --- Label: gradient style ------------------------------------------------------------------ */
+
+/*
+ * Clay paints labels with `background-color`, which cannot hold a gradient, so this is the one
+ * Figma style with no Clay equivalent — hence the `--lw-` tokens.
+ */
+.lw-label--gradient {
+	background-image: linear-gradient(
+		var(--lw-label-gradient-angle, to right),
+		var(--lw-label-gradient-from, #edf3ff),
+		var(--lw-label-gradient-to, #ede2ff)
+	);
+	color: var(--lw-label-gradient-color, #1f2531);
+}
+
+/* --- Label: outline stroke ------------------------------------------------------------------ */
+
+/*
+ * The Figma's outline style is a 2px stroke drawn *inside* the shape: measured off the exported
+ * render, outline Large is 70x40 — exactly the same box as tonal Large. A CSS `border` would sit
+ * outside that box and make the chip 74x44, so the three styles would no longer line up.
+ *
+ * An inset box-shadow reproduces an inside stroke exactly, and Clay already exposes
+ * `.label { box-shadow: var(--label-box-shadow) }`, so this still runs through a Clay property
+ * rather than an override. The border is zeroed to keep it from adding width back.
+ */
+.lw-label--outline {
+	--label-border-width: 0;
+	--label-box-shadow: inset 0 0 0
+		var(--lw-label-outline-border-width, 2px)
+		var(--label-secondary-border-color, #0b5fff);
+}
+
+/*
+ * Clay's focus rule for linked labels sets `box-shadow` outright, which would drop the stroke above
+ * for as long as the label had focus. Re-declaring it with both keeps the outline visible and still
+ * uses Clay's own focus ring rather than one of ours.
+ */
+.lw-label--outline[href].focus,
+.lw-label--outline[href]:focus-visible,
+.c-prefers-focus .lw-label--outline[href]:focus {
+	box-shadow: var(--label-box-shadow), var(--component-focus-box-shadow);
+}
+
+/* --- Label: small tier line height ----------------------------------------------------------- */
+
+/*
+ * The Figma sets 24/16 on Large and Medium but 1.25 on Small. Clay has a single
+ * `--label-line-height` with no per-size variant, so the small tier re-declares it on itself.
+ */
+.label-sm {
+	--label-line-height: 1.25;
+}
+
+/* --- Label: undo Clay's border compensation on the lg/sm tiers -------------------------------- */
+
+/*
+ * Clay pulls `.label-item` up and down by 1px inside its large and small tiers:
+ *
+ *   .label-lg .label-item { margin-top: -1px; margin-bottom: -1px }
+ *
+ * That compensates for the 1px border Clay assumes every label carries, keeping the outer height on
+ * a round number. The Figma draws no stroke on tonal or gradient, so `--label-border-width` is
+ * zeroed — at which point the compensation has nothing to cancel and simply makes those two sizes
+ * 2px shorter than designed. Clay's base tier has no such rule, which is why Medium measured
+ * correctly while Large and Small did not.
+ *
+ * The -1px values are hardcoded in Clay rather than exposed as properties, so this is one of the
+ * few places a real override is unavoidable.
+ */
+.label-lg .label-item,
+.label-sm .label-item {
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+/* --- Label: icon sizing ----------------------------------------------------------------------- */
+
+/*
+ * Figma uses a 20px icon on Large and Medium, 16px on Small. Clay sizes `.lexicon-icon` at `1em`
+ * inside labels, which would track font-size instead; these are the design's fixed sizes. The icons
+ * inherit `currentColor`, so they follow whichever variant's text token is in play.
+ */
+.label .lexicon-icon {
+	height: 1.25rem;
+	width: 1.25rem;
+}
+
+.label-sm .lexicon-icon {
+	height: 1rem;
+	width: 1rem;
+}

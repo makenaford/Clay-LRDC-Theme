@@ -62,9 +62,22 @@ export function TokenStoreProvider({children}: {children: ReactNode}) {
 		}
 
 		try {
-			// Merge rather than replace: a stored theme written before a token was added should
-			// not leave that new token undefined.
-			return {...defaults, ...(JSON.parse(stored) as TokenValues)};
+			const parsed = JSON.parse(stored) as TokenValues;
+
+			// Keep only tokens that still exist. A stored theme outlives the token files around
+			// it — rename or delete a token and its old value would otherwise sit in storage
+			// forever, get written to :root on every load, and show up in exports as a property
+			// no component reads. Merging rather than replacing covers the other direction: a
+			// token added since the theme was saved keeps its shipped default.
+			const known: TokenValues = {};
+
+			for (const [cssVar, value] of Object.entries(parsed)) {
+				if (cssVar in defaults) {
+					known[cssVar] = value;
+				}
+			}
+
+			return {...defaults, ...known};
 		}
 		catch {
 			return defaults;

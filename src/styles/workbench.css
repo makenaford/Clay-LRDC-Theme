@@ -149,6 +149,17 @@ body {
 	overflow: hidden;
 }
 
+/*
+ * Previews must render in the design system's font, not the tool's. The workbench chrome sets its
+ * own system stack on `.lw-wb`, which components would otherwise inherit — so a Label specified in
+ * Source Sans would silently be measured in -apple-system, and every preview would be subtly wrong.
+ */
+.lw-wb-page,
+.lw-wb-preview__page,
+.lw-wb-preview__stage {
+	font-family: var(--body-font-family, 'Source Sans 3', 'Source Sans Pro', sans-serif);
+}
+
 .lw-wb-preview__stage {
 	background: #fff;
 	border: 1px solid #e7e7ed;
