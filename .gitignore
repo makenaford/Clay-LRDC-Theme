@@ -3,3 +3,9 @@ dist/
 .DS_Store
 *.local
 .vite/
+
+# Third-party brand/trademark icons (Apple, Airbnb, Alipay, Android, App Store, Behance, …).
+# Excluded deliberately: this repository is public, the icon set arrived with no licence, and those
+# marks carry usage restrictions of their own. The rsync in src/icons/README.md will repopulate this
+# directory on a re-sync — this rule is what stops it silently re-entering git.
+src/icons/library/brands/
