@@ -456,3 +456,19 @@
 		font-size: 2.25rem;
 	}
 }
+
+/*
+ * The solutions tabs are <button> elements, not links — they switch a panel rather than navigate
+ * anywhere, so a button is the correct control. Clay's `.nav-tabs .nav-link` is written for anchors
+ * though, and leaves the browser's default button background and font showing through.
+ *
+ * This resets only those UA defaults. It sets no colour and no border: the tab's resting, selected
+ * and disabled appearance still comes entirely from the Tabs component's `--nav-tabs-*` tokens,
+ * which is why editing those tokens restyles this section too. `font-weight` is deliberately not
+ * reset — Clay sets it, and this rule would otherwise win on source order and undo it.
+ */
+.lw-solutions .nav-link {
+	background-color: transparent;
+	font-family: inherit;
+	font-size: inherit;
+}
