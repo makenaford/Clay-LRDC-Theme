@@ -19,7 +19,7 @@ import type {TokenValues} from '../tokens/types';
  * the next paint.
  */
 
-const STORAGE_KEY = 'liferay-clay-workbench:tokens';
+const STORAGE_KEY = 'clay-lrdc-theme:tokens';
 
 /** Every token's shipped default, flattened across all sets. */
 function defaultValues(): TokenValues {
